@@ -2277,11 +2277,11 @@ class unyt_quantity(unyt_array):
     # see https://github.com/yt-project/unyt/issues/224
     if Version(version("numpy")) >= Version("2.0.0dev0"):
 
-        def reshape(self, shape, /, *, order="C"):
+        def reshape(self, shape, /, *, order="C", copy=None):
             if shape == () or shape is None:
-                return super().reshape(shape, order=order)
+                return super().reshape(shape, order=order, copy=copy)
             else:
-                return unyt_array(self).reshape(shape, order=order)
+                return unyt_array(self).reshape(shape, order=order, copy=copy)
 
     else:
 
