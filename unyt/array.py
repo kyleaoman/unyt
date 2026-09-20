@@ -1814,6 +1814,9 @@ class unyt_array(np.ndarray):
                     unyt_array,
                     unyt_quantity,
                 ):
+                    # This object is a unyt array/quantity (not a subclass) but one of the
+                    # inputs is a subclass. We return NotImplemented to give subclasses
+                    # a chance to define the result.
                     return NotImplemented
         func = getattr(ufunc, method)
         if "out" not in kwargs:
